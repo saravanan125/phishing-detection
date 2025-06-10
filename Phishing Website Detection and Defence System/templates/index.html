@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detect and defend against phishing URLs with our advanced machine learning model.">
+  <meta name="keywords" content="phishing url, phishing, cyber security, machine learning, classifier, python">
+  <meta property="og:title" content="Phishing URL Detection & Defense">
+  <meta property="og:description" content="Check if a URL is safe to use with our phishing detection and defense tool.">
+  <meta property="og:image" content="https://example.com/logo.png">
+  <meta property="og:url" content="https://example.com">
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+  <title>Phishing URL Detection & Defense</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link href="static/styles.css" rel="stylesheet">
+  <style>
+    /* Custom styles for the report system */
+    .report-card {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .report-card .form-group label {
+      color: #000; /* Black font color for labels */
+      font-weight: bold;
+    }
+    .report-card .form-select, .report-card .form-control {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for inputs */
+      border: 1px solid #ccc;
+      color: #000; /* Black font color for inputs */
+    }
+    .report-card .form-select:focus, .report-card .form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+    .report-card .btn-primary {
+      background-color: #007bff;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .report-card .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">PhishGuard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/learn">Learn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Settings</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dark Mode Toggle Button -->
+  <button id="theme-toggle" class="btn btn-secondary btn-sm position-fixed top-0 end-0 m-3">
+    🌓 Toggle Theme
+  </button>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h1 class="display-4 fw-bold mb-4">Phishing URL Detection & Defense System</h1>
+        <p class="lead mb-5">Enter a URL below to check if it's safe to use.</p>
+
+        <!-- Alert messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- Form -->
+        <form action="/" method="post" class="mb-5">
+          <div class="input-group input-group-lg">
+            <input type="text" class="form-control form-control-lg" name="url" id="url" placeholder="Enter URL" required value="{{ url if url }}">
+            <button class="btn btn-primary btn-lg" type="submit">Check URL</button>
+          </div>
+          <!-- Loading Spinner -->
+          <div id="loading" class="spinner-border text-primary mt-3" role="status" style="display: none;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </form>
+
+        <!-- Results Section -->
+        {% if xx != -1 %}
+        <div id="results" class="mt-5">
+          <div class="card mb-4 {% if xx >= 0.5 %}border-success{% else %}border-danger{% endif %}">
+            <div class="card-header {% if xx >= 0.5 %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+              <h3 class="mb-0">Analysis Results</h3>
+            </div>
+            <div class="card-body">
+              <h4 id="prediction" class="mb-4 text-black">{{ pred }}</h4>
+              <div class="progress mb-3" style="height: 20px;">
+                {% if xx >= 0.5 %}
+                <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: {{ xx*100 }}%;">{{ xx*100 }}% Safe</div>
+                {% else %}
+                <div id="progress-bar" class="progress-bar bg-danger" role="progressbar" style="width: {{ (1-xx)*100 }}%;">{{ (1-xx)*100 }}% Unsafe</div>
+                {% endif %}
+              </div>
+              
+              {% if in_blacklist %}
+              <div class="alert alert-warning mt-3">
+                <i class="bi bi-exclamation-triangle-fill"></i> This URL is in our blacklist database of known phishing sites.
+              </div>
+              {% endif %}
+              
+              <div class="d-grid gap-3 mt-4">
+                {% if xx >= 0.7 %}
+                <a href="{{ url }}" class="btn btn-success btn-lg" target="_blank">
+                  <i class="bi bi-shield-check"></i> Continue to Safe Site
+                </a>
+                {% elif xx >= 0.5 %}
+                <a href="{{ url }}" class="btn btn-warning btn-lg" target="_blank">
+                  <i class="bi bi-shield-exclamation"></i> Proceed with Caution
+                </a>
+                {% else %}
+                <a href="{{ url }}" class="btn btn-danger btn-lg" target="_blank">
+                  <i class="bi bi-shield-x"></i> Proceed at Your Own Risk
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Safety Tips -->
+          {% if safety_tips %}
+          <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+              <h3 class="mb-0"><i class="bi bi-info-circle"></i> Safety Tips</h3>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                {% for tip in safety_tips %}
+                <li class="list-group-item">{{ tip }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+          
+            <!-- Report System -->
+  <div class="card report-card">
+    <div class="card-header bg-secondary text-white">
+      <h3 class="mb-0"><i class="bi bi-flag"></i> Report This URL</h3>
+    </div>
+    <div class="card-body">
+      <form action="/report" method="post">
+        <input type="hidden" name="url" value="{{ url }}">
+        <div class="form-group mb-3">
+          <label for="report_type">Report Type:</label>
+          <select class="form-select" id="report_type" name="report_type" required>
+            <option value="">Select a reason</option>
+            <option value="phishing">This is a phishing site</option>
+            <option value="false_positive">False positive - This is a safe site</option>
+            <option value="other">Other issue</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="notes">Description (optional):</label>
+          <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Please provide any additional details"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Report</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+  <!-- Toast Notifications -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Notification</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        document.body.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '🌞 Light Mode';
+      } else {
+        document.body.setAttribute('data-theme', 'light');
+        themeToggle.textContent = '🌙 Dark Mode';
+      }
+    });
+
+    // Loading Spinner
+    document.querySelector('form').addEventListener('submit', () => {
+      const loadingSpinner = document.getElementById('loading');
+      loadingSpinner.style.display = 'block';
+    });
+
+    // Toast Notifications
+    function showToast(message, type = 'info') {
+      const toastElement = document.getElementById('toast');
+      const toastBody = toastElement.querySelector('.toast-body');
+      toastBody.textContent = message;
+
+      toastElement.classList.remove('bg-success', 'bg-danger', 'text-white');
+      if (type === 'success') {
+        toastElement.classList.add('bg-success', 'text-white');
+      } else if (type === 'error') {
+        toastElement.classList.add('bg-danger', 'text-white');
+      }
+
+      const toast = new bootstrap.Toast(toastElement);
+      toast.show();
+    }
+  </script>
+</body>
+</html>

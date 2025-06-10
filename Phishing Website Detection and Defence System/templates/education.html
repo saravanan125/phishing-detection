@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about phishing attacks and how to stay safe online">
+  <title>Phishing Education</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
+  <style>
+    /* Vibrant Gradient Background */
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* Card Styling */
+    .info-card {
+      margin-bottom: 30px;
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Icon Box */
+    .icon-box {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    /* Example Phishing Box */
+    .example-phishing {
+      background-color: rgba(248, 215, 218, 0.1);
+      border-left: 5px solid #dc3545;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    /* Tip Box */
+    .tip-box {
+      background-color: rgba(209, 231, 221, 0.1);
+      border-left: 5px solid #198754;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    /* Dark Mode Adjustments */
+    [data-theme="light"] body {
+      background: linear-gradient(135deg, #f0f2f5, #e0e5ec);
+      color: #000;
+    }
+    [data-theme="light"] .info-card {
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+    }
+    [data-theme="light"] .example-phishing {
+      background-color: rgba(248, 215, 218, 0.9);
+      color: #000;
+    }
+    [data-theme="light"] .tip-box {
+      background-color: rgba(209, 231, 221, 0.9);
+      color: #000;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">PhishGuard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/learn">Learn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dark Mode Toggle Button -->
+  <button id="theme-toggle" class="btn btn-secondary btn-sm position-fixed top-0 end-0 m-3">
+    🌓 Toggle Theme
+  </button>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="text-center mb-5">
+          <h1 class="display-4 fw-bold">Phishing Education Center</h1>
+          <p class="lead">Learn how to identify and protect yourself from phishing attacks</p>
+          <a href="/" class="btn btn-primary mt-3">Return to URL Checker</a>
+        </div>
+        
+        <!-- Three Separate Cards in a Single Row -->
+        <div class="row mb-5">
+          <!-- What is Phishing? Card -->
+          <div class="col-md-4">
+            <div class="card info-card h-100">
+              <div class="card-body">
+                <div class="icon-box text-danger">
+                  <i class="bi bi-shield-exclamation"></i>
+                </div>
+                <h3 class="card-title text-center">What is Phishing?</h3>
+                <p class="card-text">
+                  Phishing is a type of cyber attack that uses disguised emails, messages, or websites to trick recipients into revealing sensitive information. 
+                  Attackers often pose as trustworthy entities to steal data such as login credentials, credit card numbers, or personal information.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Common Tactics Card -->
+          <div class="col-md-4">
+            <div class="card info-card h-100">
+              <div class="card-body">
+                <div class="icon-box text-warning">
+                  <i class="bi bi-exclamation-triangle"></i>
+                </div>
+                <h3 class="card-title text-center">Common Tactics</h3>
+                <p class="card-text">
+                  Phishers use tactics like creating urgency, impersonating trusted organizations, using misleading domain names, and exploiting current events. 
+                  They often include deceptive links that lead to fake websites designed to steal your information.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- How to Stay Safe Card -->
+          <div class="col-md-4">
+            <div class="card info-card h-100">
+              <div class="card-body">
+                <div class="icon-box text-success">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <h3 class="card-title text-center">How to Stay Safe</h3>
+                <p class="card-text">
+                  Protect yourself by verifying sender information, hovering over links before clicking, being cautious with attachments, 
+                  using multi-factor authentication, and keeping your software updated. When in doubt, contact organizations directly.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h2 class="mb-4 mt-5">How to Identify Phishing URLs</h2>
+        
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <div class="card mb-4">
+              <div class="card-header bg-danger text-white">
+                <h3 class="mb-0">Red Flags in URLs</h3>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <strong>Misspelled Domain Names:</strong> 
+                    Slight variations like "paypai.com" instead of "paypal.com"
+                  </li>
+                  <li class="list-group-item">
+                    <strong>IP Addresses in URL:</strong> 
+                    URLs containing IP addresses (e.g., http://123.45.67.89/...) instead of domain names
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Suspicious Subdomains:</strong> 
+                    "bank.secure-login.com" instead of "secure-login.bank.com"
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Excessive Subdomains:</strong> 
+                    Long, complex domain structures designed to confuse
+                  </li>
+                  <li class="list-group-item">
+                    <strong>URL Shorteners:</strong> 
+                    Shortened URLs that hide the true destination
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card mb-4">
+              <div class="card-header bg-success text-white">
+                <h3 class="mb-0">Safety Indicators</h3>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <strong>HTTPS Connection:</strong> 
+                    Secure websites use HTTPS and show a padlock icon in the browser
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Proper Domain Structure:</strong> 
+                    Main domain name should match the organization you expect
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Consistent URL:</strong> 
+                    URL matches what you'd expect for the service you're accessing
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Few Special Characters:</strong> 
+                    Legitimate URLs typically avoid excessive symbols like @, %, or extra hyphens
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Established Domain Age:</strong> 
+                    Legitimate organizations typically have domains registered for many years
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h2 class="mb-4">Examples of Phishing URLs</h2>
+        
+        <div class="example-phishing mb-4">
+          <h4><i class="bi bi-x-circle"></i> Phishing Example:</h4>
+          <p><strong>https://paypal-secure-login.com/</strong></p>
+          <p><strong>Why it's suspicious:</strong> This URL uses "paypal" in the domain, but it's not the real PayPal.com. The legitimate URL would be "https://www.paypal.com/".</p>
+        </div>
+        
+        <div class="example-phishing mb-4">
+          <h4><i class="bi bi-x-circle"></i> Phishing Example:</h4>
+          <p><strong>https://accounts-google.com/login</strong></p>
+          <p><strong>Why it's suspicious:</strong> This looks like a Google login page but is not hosted on google.com. The legitimate URL would be "https://accounts.google.com/".</p>
+        </div>
+        
+        <div class="example-phishing mb-5">
+          <h4><i class="bi bi-x-circle"></i> Phishing Example:</h4>
+          <p><strong>http://secure-bank-login.com@185.142.236.34/</strong></p>
+          <p><strong>Why it's suspicious:</strong> This URL uses the @ symbol to hide the actual destination (the IP address). The text before @ is ignored when resolving where to navigate.</p>
+        </div>
+        
+        <h2 class="mb-4">Safety Tips</h2>
+        
+        <div class="tip-box mb-4">
+          <h4><i class="bi bi-check-circle"></i> Verify the URL</h4>
+          <p>Always check the full URL in your browser's address bar before entering sensitive information. Look closely at the domain name and be suspicious of misspellings or added words.</p>
+        </div>
+        
+        <div class="tip-box mb-4">
+          <h4><i class="bi bi-check-circle"></i> Don't Trust Link Text</h4>
+          <p>Hover over links without clicking to see where they actually lead. The displayed text may say "PayPal.com" but the actual link could be entirely different.</p>
+        </div>
+        
+        <div class="tip-box mb-4">
+          <h4><i class="bi bi-check-circle"></i> Use Bookmarks</h4>
+          <p>For important sites like banking, email, or shopping, create bookmarks instead of clicking links from emails or messages.</p>
+        </div>
+        
+        <div class="tip-box mb-4">
+          <h4><i class="bi bi-check-circle"></i> Use Our URL Checker</h4>
+          <p>When in doubt, use our URL checker tool to evaluate suspicious links before visiting them.</p>
+        </div>
+        
+        <div class="text-center mt-5">
+          <a href="/" class="btn btn-primary btn-lg">Return to URL Checker</a>
+          <a href="/dashboard" class="btn btn-info btn-lg ms-2">View Security Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        document.body.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '🌞 Light Mode';
+      } else {
+        document.body.setAttribute('data-theme', 'light');
+        themeToggle.textContent = '🌙 Dark Mode';
+      }
+    });
+  </script>
+</body>
+</html>

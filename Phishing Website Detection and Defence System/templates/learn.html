@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about phishing attacks and how to protect yourself">
+  <meta name="keywords" content="phishing, cybersecurity, online safety, security awareness">
+  <title>Learn About Phishing - PhishGuard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link href="static/styles.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card-header {
+      background: rgba(255, 255, 255, 0.2);
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+    }
+    .list-group-item {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #ffffff;
+      transition: background 0.3s ease;
+    }
+    .list-group-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .btn-primary {
+      background: #007bff;
+      border: none;
+      transition: background 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+    .btn-secondary {
+      background: #6c757d;
+      border: none;
+      transition: background 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #ffffff;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #0056b3;
+    }
+    .navbar {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .nav-link {
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #007bff !important;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .display-4 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .card-text {
+      font-size: 1rem;
+    }
+    .list-group-item h4 {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .list-group-item p {
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">PhishGuard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/learn">Learn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dark Mode Toggle Button -->
+  <button id="theme-toggle" class="btn btn-secondary btn-sm position-fixed top-0 end-0 m-3">
+    🌓 Toggle Theme
+  </button>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h1 class="display-4 fw-bold mb-4 text-center">Understanding Phishing Attacks</h1>
+        
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title"><i class="bi bi-question-circle"></i> What is Phishing?</h2>
+            <p class="card-text">
+              Phishing is a type of cyber attack where criminals disguise themselves as trustworthy entities to steal sensitive information such as usernames, passwords, credit card details, or other personal data. These attacks often come through email, text messages, or fake websites that mimic legitimate organizations.
+            </p>
+          </div>
+        </div>
+        
+        <div class="card mb-4">
+          <div class="card-header bg-danger text-white">
+            <h2 class="mb-0"><i class="bi bi-exclamation-triangle"></i> Common Types of Phishing Attacks</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <h3>Email Phishing</h3>
+                <p>Mass-distribution of fraudulent emails impersonating legitimate organizations.</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h3>Spear Phishing</h3>
+                <p>Targeted attacks directed at specific individuals or companies.</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h3>Whaling</h3>
+                <p>Phishing attempts targeting high-profile executives or stakeholders.</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h3>Smishing (SMS Phishing)</h3>
+                <p>Phishing conducted via SMS or text messages on mobile devices.</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h3>Vishing (Voice Phishing)</h3>
+                <p>Fraudulent phone calls trying to extract sensitive information.</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h3>Clone Phishing</h3>
+                <p>Replicating legitimate emails with malicious attachments or links.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mb-4">
+          <div class="card-header bg-warning">
+            <h2 class="mb-0"><i class="bi bi-shield-lock"></i> How to Identify Phishing Attempts</h2>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <h4><i class="bi bi-link"></i> Check the URL</h4>
+                <p>Look at the address bar. Phishing sites often use URLs that look similar to legitimate ones but have slight variations or misspellings. Always verify that you're on the correct domain before entering credentials.</p>
+              </li>
+              <li class="list-group-item">
+                <h4><i class="bi bi-lock"></i> Look for HTTPS</h4>
+                <p>Legitimate websites, especially those that handle sensitive information, should use secure connections (HTTPS). Look for the padlock icon in your browser's address bar.</p>
+              </li>
+              <li class="list-group-item">
+                <h4><i class="bi bi-exclamation-circle"></i> Be Wary of Urgent Messages</h4>
+                <p>Phishing attempts often create a false sense of urgency to pressure you into acting quickly without thinking. Be suspicious of messages that demand immediate action.</p>
+              </li>
+              <li class="list-group-item">
+                <h4><i class="bi bi-spell-check"></i> Look for Poor Grammar and Spelling</h4>
+                <p>Many phishing attempts contain spelling errors, grammatical mistakes, or awkward phrasing. Professional organizations typically have copy editors review their communications.</p>
+              </li>
+              <li class="list-group-item">
+                <h4><i class="bi bi-envelope"></i> Suspicious Sender Email</h4>
+                <p>Check the sender's email address carefully. Phishers often use addresses that look similar to legitimate ones but with slight variations.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card mb-4">
+          <div class="card-header bg-success text-white">
+            <h2 class="mb-0"><i class="bi bi-shield-check"></i> Best Practices for Protection</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Use Multi-Factor Authentication</h3>
+                    <p class="card-text">Enable MFA whenever possible. This provides an additional layer of security even if your password is compromised.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Keep Software Updated</h3>
+                    <p class="card-text">Regularly update your operating system, browsers, and security software to protect against known vulnerabilities.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Use a Password Manager</h3>
+                    <p class="card-text">Create strong, unique passwords for each site and store them securely using a password manager.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Verify Before Clicking</h3>
+                    <p class="card-text">Hover over links to see their destination before clicking. If in doubt, manually type the URL into your browser.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Be Cautious with Personal Information</h3>
+                    <p class="card-text">Legitimate organizations typically don't request sensitive information via email or text messages.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Use PhishGuard Tools</h3>
+                    <p class="card-text">Use our URL checking tool before visiting suspicious websites to verify their legitimacy and safety.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mb-4">
+          <div class="card-header bg-info text-white">
+            <h2 class="mb-0"><i class="bi bi-flag"></i> What to Do If You've Been Phished</h2>
+          </div>
+          <div class="card-body">
+            <ol class="list-group list-group-numbered">
+              <li class="list-group-item">
+                <strong>Change Your Passwords</strong> - Immediately change passwords for any accounts that may have been compromised.
+              </li>
+              <li class="list-group-item">
+                <strong>Contact Financial Institutions</strong> - If you've shared banking details, contact your bank immediately.
+              </li>
+              <li class="list-group-item">
+                <strong>Enable Additional Security</strong> - Add extra security like two-factor authentication to your accounts.
+              </li>
+              <li class="list-group-item">
+                <strong>Monitor Your Accounts</strong> - Keep a close eye on your accounts for any suspicious activities.
+              </li>
+              <li class="list-group-item">
+                <strong>Report the Phishing Attempt</strong> - Use our reporting tool to help protect others from similar attacks.
+              </li>
+            </ol>
+          </div>
+        </div>
+        
+        <div class="text-center mb-5">
+          <a href="/" class="btn btn-primary btn-lg">Go Back to URL Checker</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        document.body.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '🌞 Light Mode';
+      } else {
+        document.body.setAttribute('data-theme', 'light');
+        themeToggle.textContent = '🌙 Dark Mode';
+      }
+    });
+  </script>
+</body>
+</html>
